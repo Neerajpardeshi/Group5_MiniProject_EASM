@@ -3,6 +3,7 @@ package com.psl.training.EASMProject.Controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,7 @@ public class EmployeeController
 	
 	//create api to insert data in table
 	@PostMapping("/insert")
+	@CrossOrigin
 	public String insertData(@RequestBody EmployeeData data) 
 	{
 		service.saveData(data);
@@ -31,6 +33,7 @@ public class EmployeeController
 	
 	//create api to update data in table
 	@PutMapping("/update")
+	@CrossOrigin
 	public String updateData(@RequestBody EmployeeData data) {
 		service.updateData(data);
 		return "Employee "+data.getFirstname()+" updated successfully";
@@ -38,6 +41,7 @@ public class EmployeeController
 	
 	//create api to show all employees
 	@GetMapping("/allemps")
+	@CrossOrigin
 	public Iterable<EmployeeData> showAllEmployees()
 	{
 		return service.showAllEmp();
@@ -45,6 +49,7 @@ public class EmployeeController
 	
 	//create api to delete record from table
 	@DeleteMapping("/delete/{id}")
+	@CrossOrigin
 	public Iterable<EmployeeData> deleteEmployee(@PathVariable int id)
 	{
 		return service.deleteEmp(id);
@@ -52,6 +57,7 @@ public class EmployeeController
 	
 	//create api to search record in table
 	@GetMapping("/search/{id}")
+	@CrossOrigin
 	public Optional<EmployeeData> search(@PathVariable int id) {
 		return service.searchEmp(id);
 	}
